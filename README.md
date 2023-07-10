@@ -12,6 +12,7 @@ This repository provides an implementation of option pricing models in C++. The 
   - [Installation](#installation)
   - [Configuration](#configuration)
   - [Dependencies](#dependencies)
+- [Compiling C++ Programs](#compiling-c-programs)
 - [Contact](#contact)
 - [Contributing](#contributing)
 - [License](#license)
@@ -65,6 +66,59 @@ The code has the following dependencies:
 - `iostream`: The standard input/output stream library for console input/output operations.
 - `cmath`: The mathematical functions library for performing mathematical calculations.
 
+## Compiling C++ Programs
+
+To simplify the process of compiling C++ programs, you can use the following batch file:
+
+```batch
+@echo off
+setlocal enabledelayedexpansion
+
+echo List of .cpp files in Current Directory
+echo.
+echo ========================================
+
+set count=0
+for /r %%f in (*.cpp) do (
+    set /a count+=1
+    echo !count!. %%~nxf
+)
+echo ========================================
+echo.
+
+set /p choice="Enter the number associated with the file you want to compile: "
+
+set count=0
+for /r %%f in (*.cpp) do (
+    set /a count+=1
+    if !count! equ %choice% set "source_file=%%~nxf"
+)
+
+set /p program_name="Enter the name for the compiled program (without .exe extension): "
+
+echo Compiling C++ program...
+g++ -o %program_name%.exe %source_file%
+echo Compilation completed.
+```
+
+To use the batch file:
+
+1. Create a new file with a `.bat` extension (e.g., `compile.bat`).
+
+2. Copy and paste the above batch file code into the newly created file.
+
+3. Save the file.
+
+4. Place the batch file in the same directory as your C++ source code files.
+
+5. Double-click the batch file to run it.
+
+6. The batch file will display a list of `.cpp` files in the current directory. Enter the number associated with the file you want to compile.
+
+7. Enter the name for the compiled program (without the `.exe` extension).
+
+8. The batch file will compile the C++ program using `g++` and generate the executable file.
+
 ## Contact
 
 For any questions, suggestions, or issues, please feel free to contact me.
@@ -82,3 +136,9 @@ This code is released under the [MIT License](LICENSE.txt). You are free to use,
 Please note that this code is provided for educational and informational purposes only. Use it at your own risk, and always consult with a qualified financial professional before making any investment decisions.
 
 ---
+
+
+
+
+
+
