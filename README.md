@@ -12,7 +12,8 @@ This repository provides an implementation of option pricing models in C++. The 
   - [Installation](#installation)
   - [Configuration](#configuration)
   - [Dependencies](#dependencies)
-- [Compiling C++ Programs](#compiling-c-programs)
+  - [Running C++ Files](#running-c-files)
+    - [Using the Compilation Batch File](#using-the-compilation-batch-file)
 - [Contact](#contact)
 - [Contributing](#contributing)
 - [License](#license)
@@ -57,7 +58,45 @@ To use the option pricing models implemented in this code, follow these steps:
 
 ### Configuration
 
-No additional configuration is required to use the option pricing models. The code includes all the necessary functions and calculations.
+To run C++ files and execute the option pricing models implemented in this code, you need the following:
+
+#### C++ Compiler
+
+A C++ compiler is required to compile the source code files (.cpp) into executable files. There are several C++ compilers available, such as:
+
+- **GCC/G++**: The GNU Compiler Collection (GCC) includes the G++ compiler, which is a popular choice for compiling C++ code on Unix-like systems (e.g., Linux, macOS). It is a command-line compiler that can be installed through package managers or downloaded directly from the GCC website.
+
+- **Microsoft Visual C++**: This compiler is provided as part of the Visual Studio suite and is commonly used on Windows systems. Visual C++ provides an integrated development environment (IDE) with a graphical user interface for code editing, building, and debugging.
+
+- **Clang**: Clang is a compiler front end for the C, C++, and Objective-C programming languages. It is designed to be a high-performance compiler and supports various platforms, including Unix-like systems, macOS, and Windows.
+
+Choose a C++ compiler that is compatible with your operating system and programming environment. Install the compiler and ensure that it is properly configured on your system.
+
+#### Integrated Development Environment (IDE)
+
+While not strictly necessary, using an Integrated Development Environment (IDE) can greatly simplify the process of writing, compiling, and running C++ code. IDEs provide a comprehensive environment with features such as code completion, syntax highlighting, debugging tools, and project management capabilities.
+
+Some popular C++ IDEs include:
+
+- **Visual Studio**: Visual Studio is a widely used IDE developed by Microsoft. It offers a rich set of features for C++ development, including code editing, debugging, and project management.
+
+- **CLion**: CLion is an IDE specifically designed for C++ development. It provides advanced code analysis, refactoring tools, and integration with build systems.
+
+- **Code::Blocks**: Code::Blocks is a free and open-source IDE that supports multiple compilers. It offers a simple and user-friendly interface with features like code completion and project management.
+
+Choose an IDE that suits your preferences and requirements. Install the IDE and configure it to work with your chosen C++ compiler.
+
+#### Text Editor
+
+If you prefer a lightweight and minimalistic approach, you can use a text editor to write C++ code. Popular text editors for C++ development include:
+
+- **Visual Studio Code**: Visual Studio Code is a lightweight and extensible text editor that provides features like syntax highlighting, code snippets, and debugging support through extensions.
+
+- **Sublime Text**: Sublime Text is a highly customizable text editor with a rich ecosystem of plugins. It supports syntax highlighting, auto-completion, and multiple selections for efficient editing.
+
+- **Atom**: Atom is an open-source text editor developed by GitHub. It offers a wide range of packages and themes for customization, making it suitable for C++ development.
+
+When using a text editor, you need to manually compile and run the C++ code through the command line or by using build automation tools like Make or CMake.
 
 ### Dependencies
 
@@ -66,58 +105,93 @@ The code has the following dependencies:
 - `iostream`: The standard input/output stream library for console input/output operations.
 - `cmath`: The mathematical functions library for performing mathematical calculations.
 
-## Compiling C++ Programs
+### Running C++ Files
 
-To simplify the process of compiling C++ programs, you can use the following batch file:
+To run C++ files, follow these general steps:
 
-```batch
-@echo off
-setlocal enabledelayedexpansion
+1. Write or obtain the C++ source code files (.cpp) containing the implementation of the option pricing models.
 
-echo List of .cpp files in Current Directory
-echo.
-echo ========================================
+2. Open a command prompt or terminal and navigate to the directory where your C++ source code files are located.
 
-set count=0
-for /r %%f in (*.cpp) do (
-    set /a count+=1
-    echo !count!. %%~nxf
-)
-echo ========================================
-echo.
+3. Compile the C++ source code files using the appropriate compiler command. For example, with G++ on Linux or macOS, you can use the following command:
 
-set /p choice="Enter the number associated with the file you want to compile: "
+   ```bash
+   g++ -o output_filename source_file.cpp
+   ```
 
-set count=0
-for /r %%f in (*.cpp) do (
-    set /a count+=1
-    if !count! equ %choice% set "source_file=%%~nxf"
-)
+   This command compiles the source file and generates an executable file with the specified output filename.
 
-set /p program_name="Enter the name for the compiled program (without .exe extension): "
+4. Once the compilation is successful, you can run
 
-echo Compiling C++ program...
-g++ -o %program_name%.exe %source_file%
-echo Compilation completed.
-```
+the compiled program by executing the generated executable file. In the case of our option pricing models, you may need to provide input values interactively as prompted by the program.
 
-To use the batch file:
+   ```bash
+   ./output_filename
+   ```
 
-1. Create a new file with a `.bat` extension (e.g., `compile.bat`).
+   This command executes the compiled program and initiates the option pricing calculations.
 
-2. Copy and paste the above batch file code into the newly created file.
+Ensure that you have the necessary permissions to compile and execute files in the specified directory. Also, make sure that any dependencies required by your code (such as libraries) are properly installed and accessible.
 
-3. Save the file.
+### Using the Compilation Batch File
 
-4. Place the batch file in the same directory as your C++ source code files.
+Additionally, in this repository, you can find a batch file named `compile.bat`. This batch file simplifies the process of compiling C++ programs by automating some of the commands.
 
-5. Double-click the batch file to run it.
+To use the compilation batch file, follow these steps:
 
-6. The batch file will display a list of `.cpp` files in the current directory. Enter the number associated with the file you want to compile.
+1. Open a text editor and paste the following code:
 
-7. Enter the name for the compiled program (without the `.exe` extension).
+   ```batch
+   @echo off
+   setlocal enabledelayedexpansion
 
-8. The batch file will compile the C++ program using `g++` and generate the executable file.
+   echo List of .cpp files in Current Directory
+   echo.
+   echo ========================================
+
+   set count=0
+   for /r %%f in (*.cpp) do (
+       set /a count+=1
+       echo !count!. %%~nxf
+   )
+   echo ========================================
+   echo.
+
+   set /p choice="Enter the number associated with the file you want to compile: "
+
+   set count=0
+   for /r %%f in (*.cpp) do (
+       set /a count+=1
+       if !count! equ %choice% set "source_file=%%~nxf"
+   )
+
+   set /p program_name="Enter the name for the compiled program (without .exe extension): "
+
+   echo Compiling C++ program...
+   g++ -o %program_name%.exe %source_file%
+   echo Compilation completed.
+   ```
+
+2. Save the file with the extension `.bat`, for example, `compile.bat`.
+
+3. Place the `compile.bat` file in the same directory as your C++ source code files.
+
+4. Open a command prompt or terminal and navigate to the directory containing the `compile.bat` file.
+
+5. Run the batch file by entering `compile.bat` in the command prompt or terminal.
+
+6. The batch file will list the available `.cpp` files in the directory and prompt you to enter the number associated with the file you want to compile.
+
+7. After selecting the file, the batch file will prompt you to enter a name for the compiled program.
+
+8. The batch file will then compile the selected `.cpp` file using the entered program name and generate an executable file with the specified name.
+
+   ```bash
+   Compiling C++ program...
+   Compilation completed.
+   ```
+
+Using the compilation batch file simplifies the process of compiling your C++ programs, especially when dealing with multiple source files in the same directory.
 
 ## Contact
 
@@ -136,9 +210,3 @@ This code is released under the [MIT License](LICENSE.txt). You are free to use,
 Please note that this code is provided for educational and informational purposes only. Use it at your own risk, and always consult with a qualified financial professional before making any investment decisions.
 
 ---
-
-
-
-
-
-
