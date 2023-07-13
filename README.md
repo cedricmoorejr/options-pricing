@@ -1,4 +1,5 @@
 # Option Pricing Models
+![image](https://github.com/cedricmoorejr/options-pricing-calculator/assets/136417849/3800baec-d5bb-4f30-822a-9ebd5fa5b805)
 
 This repository provides an implementation of option pricing models in C++. The code includes functions for calculating option prices using the Black-Scholes formula for European options and the binomial option pricing model for American options.
 
